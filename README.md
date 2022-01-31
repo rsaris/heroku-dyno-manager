@@ -15,8 +15,8 @@ This app will provide a way to restart select heroku dynos
 1. Install dependencies by running `yarn install` in the root directory
 
 ## Running the application
-1. Build the app by running `npx react-native run-android`
 1. Run the app server by running `npx react-native start`
+1. Build the app by running `npx react-native run-android`
 
 ### Debug steps
 * If `react-native run-android` hangs on `app:installDebug` run `adb kill-server && adb start-server`
@@ -27,6 +27,10 @@ This app will provide a way to restart select heroku dynos
 1. Determine your device ID by runing `adb devices`
 1. Using that device name, run `npx react-native run-android --device=<device-id>
 
+
+# Local setup
+1. Update /home/bob/Documents/development/heroku-dyno-manager/src/DynoManager/index.js#HEROKU_APP to point to the specific app you want to work with
+1. Update /home/bob/Documents/development/heroku-dyno-manager/src/HerokuClient/index.js#BEARER_TOKEN with a valid token
 # TODO
 
 * [ ] Add ability to restart a single dyno based on hard coded app and credentials
