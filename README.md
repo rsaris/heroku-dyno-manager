@@ -16,7 +16,7 @@ This app will provide a way to restart select heroku dynos
 
 ## Running the application
 1. Run the app server by running `npx react-native start`
-1. Build the app by running `npx react-native run-android`
+1. Build the app by running `npx react-native run-android` (append `--variant release` to build this in production mode)
 
 ### Debug steps
 * If `react-native run-android` hangs on `app:installDebug` run `adb kill-server && adb start-server`
