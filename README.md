@@ -29,9 +29,8 @@ This app will provide a way to restart select heroku dynos
 
 
 # Local setup
-1. Update /home/bob/Documents/development/heroku-dyno-manager/src/DynoManager/index.js#HEROKU_APP to point to the specific app you want to work with
-1. Update /home/bob/Documents/development/heroku-dyno-manager/src/HerokuClient/index.js#BEARER_TOKEN with a valid token
-# TODO
+1. Copy `src/config.js.sample` to `config.js`
+1. Update `HEROKU_APP_NAME` and `HEROKU_API_KEY` to match the application you are working with
 
 * [ ] Add ability to restart a single dyno based on hard coded app and credentials
 * [ ] Add ability to set app name

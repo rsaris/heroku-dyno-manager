@@ -8,7 +8,7 @@ import {
 import { getApps } from '../AppService';
 import { restartDyno } from '../DynoService';
 
-const HEROKU_APP = 'HEROKU APP';
+import { HEORKU_APP_NAME } from '../config';
 
 const listApps = async () => {
   const apps = await getApps();
@@ -17,7 +17,7 @@ const listApps = async () => {
 
 const restartWebDyno = (dynoName) => () => {
   restartDyno(
-    HEROKU_APP,
+    HEORKU_APP_NAME,
     dynoName,
   );
 };

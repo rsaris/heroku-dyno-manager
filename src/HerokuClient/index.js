@@ -1,12 +1,12 @@
 const HEROKU_API_BASE_URL = 'https://api.heroku.com';
 
-const BEARER_TOKEN = 'TOKEN';
+import { HEROKU_API_KEY } from "../config";
 
 export default class HerokuClient {
   constructor() {
     this._defaultHeaders = {
       Accept: 'application/vnd.heroku+json; version=3',
-      Authorization: `Bearer ${BEARER_TOKEN}`,
+      Authorization: `Bearer ${HEROKU_API_KEY}`,
       'Content-Type': 'application/json',
     };
   }
@@ -33,5 +33,5 @@ export default class HerokuClient {
     );
     console.log(`${response.status}: ${response.statusText}`);
     return response;
-  }
+  };
 }
