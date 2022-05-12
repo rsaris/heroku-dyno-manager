@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   Button,
+  ScrollView,
   View,
 } from 'react-native';
 
 import { getApps } from '../AppService';
-import { restartDyno } from '../DynoService';
+import { getWebDynos, restartDyno } from '../DynoService';
 
-import { HEORKU_APP_NAME } from '../config';
+import { HEROKU_APP_NAME } from '../config';
 
 const listApps = async () => {
   const apps = await getApps();
@@ -17,28 +18,29 @@ const listApps = async () => {
 
 const restartWebDyno = (dynoName) => () => {
   restartDyno(
-    HEORKU_APP_NAME,
+    HEROKU_APP_NAME,
     dynoName,
   );
 };
 
-const dynoIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export default function DynoManager() {
+  const [webDynos, setWebDynos] = useState([]);
+  useEffect(async () => {
+    setWebDynos(await getWebDynos(HEROKU_APP_NAME));
+  }, []);
 
-const DynoManager = () => {
   return (
-    <View>
+    <ScrollView style={{ paddingTop: 30, paddingBottom: 30 }}>
       {
-        dynoIds.map(id => (
-          <View key={id} style={{ marginBottom: 20, marginTop: 20 }}>
+        webDynos.sort((dynoA, dynoB) => { return dynoA.name > dynoB.name; }).map(dyno => (
+          <View key={dyno.name} style={{ marginBottom: 20, marginTop: 20 }}>
             <Button
-              title={`Restart web.${id}`}
-              onPress={restartWebDyno(`web.${id}`)}
+              title={`Restart ${dyno.name}`}
+              onPress={restartWebDyno(dyno.name)}
             />
           </View>
         ))
       }
-    </View>
+    </ScrollView>
   );
 };
-
-export default DynoManager;

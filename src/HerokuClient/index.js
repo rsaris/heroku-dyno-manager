@@ -12,26 +12,22 @@ export default class HerokuClient {
   }
 
   callDelete = async path => {
-    const response = await fetch(
-      `${HEROKU_API_BASE_URL}/${path}`,
-      {
-        headers: this._defaultHeaders,
-        method: 'DELETE',
-      },
-    );
+    const response = await fetch(`${HEROKU_API_BASE_URL}/${path}`, {
+      headers: this._defaultHeaders,
+      method: 'DELETE',
+    });
     console.log(`${response.status}: ${response.statusText}`);
     return response;
   };
 
   callGet = async path => {
-    const response = await fetch(
-      `${HEROKU_API_BASE_URL}/${path}`,
-      {
-        headers: this._defaultHeaders,
-        method: 'GET',
-      },
-    );
+    const response = await fetch(`${HEROKU_API_BASE_URL}/${path}`, {
+      headers: this._defaultHeaders,
+      method: 'GET',
+    });
     console.log(`${response.status}: ${response.statusText}`);
-    return response;
+    if (!response.ok) { return null; }
+
+    return await response.json();
   };
 }
