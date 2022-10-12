@@ -14,6 +14,9 @@ This app will provide a way to restart select heroku dynos
 1. Install yarn [link](https://classic.yarnpkg.com/en/docs/install/)
 1. Install dependencies by running `yarn install` in the root directory
 
+### If running the macOS build
+1. Install Ruby and then install cocoapods by running `gem install cocoapods`
+
 ## Running the application
 1. Run the app server by running `npx react-native start`
 1. Build the app by running `npx react-native run-android` (append `--variant release` to build this in production mode)

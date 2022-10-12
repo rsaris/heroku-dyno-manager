@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "build:mac": "xcodebuild -workspace macos/herokudynomanager.xcworkspace -scheme herokudynomanager-macOS -config Release",
     "ios": "react-native run-ios",
     "macos": "react-native run-macos",
     "start": "react-native start",
