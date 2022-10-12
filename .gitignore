@@ -60,3 +60,6 @@ buck-out/
 
 # Config
 /src/config.js
+
+# Builds
+/builds
