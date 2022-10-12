@@ -27,8 +27,9 @@ This app will provide a way to restart select heroku dynos
 ## Run application on device
 
 1. Get your phone working by follow instructions [here](https://reactnative.dev/docs/running-on-device)
-1. Determine your device ID by runing `adb devices`
-1. Using that device name, run `npx react-native run-android --device=<device-id>
+1. Determine your device ID by running `adb devices`
+1. Using that device name, run `npx react-native run-android --deviceId <device-id>`
+1. This is also `bin/start-android` the default behavior of.
 
 
 # Local setup
