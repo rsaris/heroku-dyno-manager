@@ -1,51 +1,28 @@
-import React, { useEffect, useState } from 'react';
-
+import React from 'react';
 import {
   Button,
   ScrollView,
   View,
 } from 'react-native';
+import propTypes from 'prop-types';
 
-import { getApps } from '../AppService';
-import { getWebDynos, restartDyno } from '../DynoService';
-
-import { HEROKU_APP_NAME } from '../config';
-
-const listApps = async () => {
-  const apps = await getApps();
-  console.log(apps[0]);
-};
-
-const restartWebDyno = dynoName => () => {
-  restartDyno(
-    HEROKU_APP_NAME,
-    dynoName,
-  );
-};
-
-function DynoManagerView() {
-  const [webDynos, setWebDynos] = useState([]);
-  useEffect(() => {
-    async function loadDynos() {
-      setWebDynos(await getWebDynos(HEROKU_APP_NAME));
-    }
-    loadDynos();
-  }, []);
-
+function DynoManagerView({ webDynos, onRestartPress }) {
   return (
     <ScrollView style={{ paddingTop: 30, paddingBottom: 30 }}>
       {
         webDynos.sort((dynoA, dynoB) => { return dynoA.name > dynoB.name; }).map(dyno => (
           <View key={dyno.name} style={{ marginBottom: 20, marginTop: 20 }}>
-            <Button
-              title={`Restart ${dyno.name}`}
-              onPress={restartWebDyno(dyno.name)}
-            />
+            <Button title={`Restart ${dyno.name}`} onPress={() => onRestartPress(dyno.name)} />
           </View>
         ))
       }
     </ScrollView>
   );
+};
+
+DynoManagerView.propTypes = {
+  webDynos: propTypes.array.isRequired,
+  onRestartPress: propTypes.func.isRequired,
 };
 
 export { DynoManagerView };
