@@ -1,9 +1,9 @@
 import React from 'react';
 
-import DynoManager from './src/DynoManager';
+import { DynoManagerView } from './src/DynoManagerView';
 
 const App = () => {
-  return <DynoManager />;
+  return <DynoManagerView />;
 };
 
 export default App;

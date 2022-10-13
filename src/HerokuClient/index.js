@@ -1,6 +1,6 @@
 const HEROKU_API_BASE_URL = 'https://api.heroku.com';
 
-import { HEROKU_API_KEY } from "../config";
+import { HEROKU_API_KEY } from '../config';
 
 export default class HerokuClient {
   constructor() {

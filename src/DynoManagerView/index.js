@@ -16,17 +16,20 @@ const listApps = async () => {
   console.log(apps[0]);
 };
 
-const restartWebDyno = (dynoName) => () => {
+const restartWebDyno = dynoName => () => {
   restartDyno(
     HEROKU_APP_NAME,
     dynoName,
   );
 };
 
-export default function DynoManager() {
+function DynoManagerView() {
   const [webDynos, setWebDynos] = useState([]);
-  useEffect(async () => {
-    setWebDynos(await getWebDynos(HEROKU_APP_NAME));
+  useEffect(() => {
+    async function loadDynos() {
+      setWebDynos(await getWebDynos(HEROKU_APP_NAME));
+    }
+    loadDynos();
   }, []);
 
   return (
@@ -44,3 +47,5 @@ export default function DynoManager() {
     </ScrollView>
   );
 };
+
+export { DynoManagerView };
