@@ -1,12 +1,16 @@
 const HEROKU_API_BASE_URL = 'https://api.heroku.com';
 
-import { HEROKU_API_KEY } from "../config";
+export const UNAUTHORIZED_RESPONSE = Symbol();
+
+function logResponse(response) {
+  console.log(`RESPONSE: Status -- ${response.status}`);
+}
 
 export default class HerokuClient {
-  constructor() {
+  constructor(authToken) {
     this._defaultHeaders = {
       Accept: 'application/vnd.heroku+json; version=3',
-      Authorization: `Bearer ${HEROKU_API_KEY}`,
+      Authorization: `Bearer ${authToken}`,
       'Content-Type': 'application/json',
     };
   }
@@ -16,7 +20,9 @@ export default class HerokuClient {
       headers: this._defaultHeaders,
       method: 'DELETE',
     });
-    console.log(`${response.status}: ${response.statusText}`);
+    logResponse(response);
+
+    if (response.status === 401) { return UNAUTHORIZED_RESPONSE; }
     return response;
   };
 
@@ -25,7 +31,9 @@ export default class HerokuClient {
       headers: this._defaultHeaders,
       method: 'GET',
     });
-    console.log(`${response.status}: ${response.statusText}`);
+    logResponse(response);
+
+    if (response.status === 401) { return UNAUTHORIZED_RESPONSE; }
     if (!response.ok) { return null; }
 
     return await response.json();

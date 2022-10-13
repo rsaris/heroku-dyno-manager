@@ -1,5 +1,2 @@
-// Insert the value in API key that you can get from here: https://dashboard.heroku.com/account
-export const HEROKU_API_KEY = '00000000-aaaa-1111-2222-bbbbbbbbbbbb';
-
 // Insert the name of the app you want to manage here
 export const HEROKU_APP_NAME = 'my-app';

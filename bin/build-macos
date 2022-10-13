@@ -1,3 +1,7 @@
 #!/bin/bash
 
 xcodebuild -workspace macos/herokudynomanager.xcworkspace -scheme herokudynomanager-macOS -config Release
+
+base_dir=$(ls ~/Library/Developer/Xcode/DerivedData | grep herokudynomanager)
+rm -rf ./builds/Heroku\ Dyno\ Manager.app
+cp -r ~/Library/Developer/Xcode/DerivedData/$base_dir/Build/Products/Release/herokudynomanager.app ./builds/Heroku\ Dyno\ Manager.app
