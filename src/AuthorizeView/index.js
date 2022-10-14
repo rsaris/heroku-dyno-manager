@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  Button,
   Linking,
   Text,
   TextInput,
   View,
 } from 'react-native';
 import propTypes from 'prop-types';
+
+import { Button } from '../Button';
 
 import { styles } from '../styles';
 
@@ -37,7 +38,9 @@ const AuthorizeView = ({ onAuthorize }) => {
         and copy the token value.
       </Text>
       <TextInput disabled={loading} style={styles.textInput} value={authToken} onChangeText={setAuthToken} />
-      <Button disabled={loading} style={styles.button} title="Authorize me" onPress={handleButtonPress} />
+      <View style={styles.buttonContainer}>
+        <Button disabled={loading} title="Authorize me" onPress={handleButtonPress} />
+      </View>
     </View>
   );
 };

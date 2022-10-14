@@ -2,5 +2,11 @@
 
 device_id=$(adb devices | grep -E "^[A-Z0-9]+\W*device" | sed -nE 's/^([0-9A-Z]+).*device/\1/p')
 
-echo Starting on $device_id
-npx react-native run-android --deviceId $device_id
+if [ -z "$device_id" ]
+then
+  echo Starting without a device id
+  npx react-native run-android
+else
+  echo Starting on $device_id
+  npx react-native run-android --deviceId $device_id
+fi

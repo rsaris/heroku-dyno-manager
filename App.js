@@ -4,6 +4,8 @@ import React, {
   useState,
  } from 'react';
 
+ import { Alert } from 'react-native';
+
 import { AuthorizeView } from './src/AuthorizeView';
 import { DynoManagerView } from './src/DynoManagerView';
 import { LoadingView } from './src/LoadingView';
@@ -64,6 +66,8 @@ const App = () => {
     );
     if (response === UNAUTHORIZED_RESPONSE) {
       resetAuthToken();
+    } else {
+      Alert.alert(`Dyno ${dynoName} restarted`);
     }
   }, [authToken, resetAuthToken]);
 

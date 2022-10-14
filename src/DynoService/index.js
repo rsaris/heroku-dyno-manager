@@ -1,8 +1,8 @@
-import { UNAUTHORIZED_RESPONSE } from "../HerokuClient";
+import { UNAUTHORIZED_RESPONSE } from '../HerokuClient';
 
 export const getWebDynos = async (herokuClient, appIdOrName) => {
   const response = await herokuClient.callGet(`apps/${appIdOrName}/dynos`);
-  if (response === UNAUTHORIZED_RESPONSE) { return UNAUTHORIZED_RESPONSE; };
+  if (response === UNAUTHORIZED_RESPONSE) { return UNAUTHORIZED_RESPONSE; }
 
   if (response) {
     return response.filter(dyno => dyno.type === 'web');
