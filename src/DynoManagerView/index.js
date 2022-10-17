@@ -10,7 +10,7 @@ import { Button } from '../Button';
 import { styles } from '../styles';
 
 const  DynoManagerView = ({ webDynos, onRestartPress }) => (
-  <ScrollView contentContainerStyle={styles.container}>
+  <ScrollView contentContainerStyle={styles.scrollContainer}>
     {
       webDynos.sort((dynoA, dynoB) => { return dynoA.name > dynoB.name; }).map(dyno => (
         <View key={dyno.name} style={styles.buttonContainer}>

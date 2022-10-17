@@ -9,18 +9,23 @@ const colors = {
   viewBackground: '#DDDDDD',
 };
 
+const spacing = {
+  small: 10,
+  medium: 20,
+};
+
 export const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: colors.buttonBackground,
     borderRadius: 4,
-    padding: 10,
+    padding: spacing.small,
     textAlign: 'center',
     width: '100%',
   },
   buttonContainer: {
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: spacing.medium,
+    marginBottom: spacing.medium,
     width: '100%',
   },
   buttonText: {
@@ -33,12 +38,19 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     height: '100%',
     justifyContent: 'center',
-    padding: 20,
+    padding: spacing.medium,
     width: '100%',
   },
   link: {
     color: colors.linkText,
     textDecorationLine: 'underline',
+  },
+  scrollContainer: {
+    alignItems: 'center',
+    backgroundColor: colors.viewBackground,
+    justifyContent: 'center',
+    minHeight: '100%',
+    padding: spacing.medium,
   },
   text: {
     color: colors.text,
@@ -48,7 +60,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.inputBackground,
     color: colors.text,
     height: 40,
-    marginTop: 20,
+    marginTop: spacing.medium,
     textAlign: 'center',
     width: 300,
   },
